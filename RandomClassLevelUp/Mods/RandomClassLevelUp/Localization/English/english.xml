@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<contentList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <content contentuid="h0d667b52ge9feg4b1dg7b4eg190480aa6d46" version="2">Random 1</content>
+  <content contentuid="h644ce4c9g7ff3g4ec7g9271gecdd834db7a3" version="1">Acts as a random class on each level up. (HP per level up is based on the base class)</content>
+  <content contentuid="h118647a1g5b4eg9a7egc817ge1ba6e476058" version="1">Random 2</content>
+  <content contentuid="h6e5fffb4g4332gad29ga62dg970fb7b3d24b" version="1">Random 3</content>
+  <content contentuid="hcf1d3ec5g8faag1b7bg4ba3gc71ca4ccc2b8" version="1">Random 4</content>
+  <content contentuid="ha5e7e630g26c0ga307g15b6gdeb36f0a5889" version="1">Acts as a random class on each level up. (HP per level up is based on the base class)</content>
+  <content contentuid="hdeb648f2g1886gd52dgd0afgfd32ee32b8be" version="1">Acts as a random class on each level up. (HP per level up is based on the base class)</content>
+  <content contentuid="h0f9babbfgf791g1ad8gea20g19c621d9183e" version="1">Acts as a random class on each level up. (HP per level up is based on the base class)</content>
+  <content contentuid="h2e495786gc3b7g48c7g9385g32a133d31328" version="1">Choose a single random subclass level. (Only subclasses that grant bonuses at this level are shown but might not be fully accurate)</content>
+</contentList>

@@ -1,0 +1,5 @@
+{
+    "RequiredVersion": 32,
+    "ModTable": "RandomClassLevelUp",
+    "FeatureFlags": ["Lua"]
+}

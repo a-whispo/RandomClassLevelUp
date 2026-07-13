@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+    <version major="4" minor="8" revision="0" build="500"/>
+    <region id="ClassDescriptions">
+        <node id="root">
+            <children>
+                <node id="ClassDescription">
+                    <attribute id="BaseHp" type="int32" value="12"/>
+                    <attribute id="CanLearnSpells" type="bool" value="false"/>
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="ClassHotbarColumns" type="int32" value="5"/>
+                    <attribute id="CommonHotbarColumns" type="int32" value="9"/>
+                    <attribute id="Description" type="TranslatedString" handle="h644ce4c9g7ff3g4ec7g9271gecdd834db7a3" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0d667b52ge9feg4b1dg7b4eg190480aa6d46" version="2"/>
+                    <attribute id="HpPerLevel" type="int32" value="7"/>
+                    <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Random1"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="1"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="ab4f357c-5341-4847-9a82-89ab991fdd07"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="4"/>
+                    <attribute id="UUID" type="guid" value="2d92a486-53b3-426d-90e1-3ee4358831b3"/>
+                </node>
+                <node id="ClassDescription">
+                    <attribute id="BaseHp" type="int32" value="12"/>
+                    <attribute id="CanLearnSpells" type="bool" value="false"/>
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="ClassHotbarColumns" type="int32" value="5"/>
+                    <attribute id="CommonHotbarColumns" type="int32" value="9"/>
+                    <attribute id="Description" type="TranslatedString" handle="ha5e7e630g26c0ga307g15b6gdeb36f0a5889" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="h118647a1g5b4eg9a7egc817ge1ba6e476058" version="1"/>
+                    <attribute id="HpPerLevel" type="int32" value="7"/>
+                    <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Random2"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="1"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="f0d4b817-7f32-4d1c-9cc6-312246f4459e"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="4"/>
+                    <attribute id="UUID" type="guid" value="51dc4e18-ab39-4491-afd7-eea6ee5711b6"/>
+                </node>
+                <node id="ClassDescription">
+                    <attribute id="BaseHp" type="int32" value="12"/>
+                    <attribute id="CanLearnSpells" type="bool" value="false"/>
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="ClassHotbarColumns" type="int32" value="5"/>
+                    <attribute id="CommonHotbarColumns" type="int32" value="9"/>
+                    <attribute id="Description" type="TranslatedString" handle="hdeb648f2g1886gd52dgd0afgfd32ee32b8be" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6e5fffb4g4332gad29ga62dg970fb7b3d24b" version="1"/>
+                    <attribute id="HpPerLevel" type="int32" value="7"/>
+                    <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Random3"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="1"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="bbedefa5-6782-4cc0-9c23-e305d5db7c05"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="4"/>
+                    <attribute id="UUID" type="guid" value="06649c00-8b21-4855-9c3e-00cbeadc6cf0"/>
+                </node>
+                <node id="ClassDescription">
+                    <attribute id="BaseHp" type="int32" value="12"/>
+                    <attribute id="CanLearnSpells" type="bool" value="false"/>
+                    <attribute id="CharacterCreationPose" type="guid" value="0f07ec6e-4ef0-434e-9a51-1353260ccff8"/>
+                    <attribute id="ClassHotbarColumns" type="int32" value="5"/>
+                    <attribute id="CommonHotbarColumns" type="int32" value="9"/>
+                    <attribute id="Description" type="TranslatedString" handle="h0f9babbfgf791g1ad8gea20g19c621d9183e" version="1"/>
+                    <attribute id="DisplayName" type="TranslatedString" handle="hcf1d3ec5g8faag1b7bg4ba3gc71ca4ccc2b8" version="1"/>
+                    <attribute id="HpPerLevel" type="int32" value="7"/>
+                    <attribute id="ItemsHotbarColumns" type="int32" value="2"/>
+                    <attribute id="LearningStrategy" type="uint8" value="1"/>
+                    <attribute id="MustPrepareSpells" type="bool" value="true"/>
+                    <attribute id="Name" type="FixedString" value="Random4"/>
+                    <attribute id="PrimaryAbility" type="uint8" value="1"/>
+                    <attribute id="ProgressionTableUUID" type="guid" value="46f10ddb-cc5f-4759-ae43-ec95d783f761"/>
+                    <attribute id="SpellCastingAbility" type="uint8" value="4"/>
+                    <attribute id="UUID" type="guid" value="78b3d069-22d5-47fa-80b1-663918303b0d"/>
+                </node>
+                
+                <!-- just a fake ClassDescription which i can grab the Description from and assign it elsewhere -->
+                <node id="ClassDescription">
+                    <attribute id="Description" type="TranslatedString" handle="h2e495786gc3b7g48c7g9385g32a133d31328" version="1"/>
+                    <attribute id="UUID" type="guid" value="b659e449-100f-424f-bba2-96cecc7bb2ea"/>
+                </node>
+            </children>
+        </node>
+    </region>
+</save>
