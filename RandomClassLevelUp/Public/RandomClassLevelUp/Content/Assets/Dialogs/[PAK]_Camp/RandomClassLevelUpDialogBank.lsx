@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="4" minor="0" revision="9" build="0" lslib_meta="v1,bswap_guids,lsf_adjacency" />
+	<region id="DialogBank">
+		<node id="DialogBank">
+			<children>
+				<node id="Resource">
+					<attribute id="AllowDeadSpeakers" type="bool" value="False" />
+					<attribute id="BlockFTB" type="bool" value="False" />
+					<attribute id="EnableTimeline" type="bool" value="True" />
+					<attribute id="ID" type="FixedString" value="7f4acd9b-15c0-81fe-9409-623634ec3ed3" />
+					<attribute id="IsAllowingJoinCombat" type="bool" value="False" />
+					<attribute id="Name" type="LSString" value="CAMP_Jergal" />
+					<attribute id="SourceFile" type="LSString" value="Mods/RandomClassLevelUp/Story/Dialogs/Camp/CAMP_Jergal.lsj" />
+					<attribute id="_OriginalFileVersion_" type="int64" value="144959613005987841" />
+					<attribute id="automated" type="bool" value="False" />
+					<attribute id="isBehaviour" type="bool" value="False" />
+					<attribute id="isPrivateDialog" type="bool" value="False" />
+					<attribute id="isSubbedDialog" type="bool" value="False" />
+					<attribute id="isWorld" type="bool" value="False" />
+					<children>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="True" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="True" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="SpeakerSlotsWithLines">
+							<attribute id="HasLines" type="bool" value="False" />
+						</node>
+						<node id="childResources">
+							<attribute id="Object" type="guid" value="a22a9d2a-5164-741f-cb59-10551521c41a" />
+						</node>
+					</children>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>
