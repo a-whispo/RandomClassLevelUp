@@ -1,6 +1,6 @@
 print("--- ClassUtils Loaded ---");
 
-ClassUtils = {};
+local ClassUtils = {};
 ClassUtils.Classes = {};
 ClassUtils.SubClasses = {};
 ClassUtils.SubClassesByClass = {};
@@ -43,3 +43,5 @@ if #ClassUtils.Classes == 0 then
     end
     print("* Filtered all classes and subclasses.");
 end
+
+return ClassUtils;

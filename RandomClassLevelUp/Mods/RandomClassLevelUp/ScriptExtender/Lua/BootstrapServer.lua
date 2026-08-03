@@ -1,6 +1,14 @@
-Ext.Require("ClassUtils.lua");
-
 print("--- Loading Server ---");
+
+local ClassUtils = Ext.Require("Shared/ClassUtils.lua");
+local Channels = Ext.Require("Shared/Channels.lua");
+local ClassRandomizer = Ext.Require("Shared/ClassRandomizer.lua");
+local CurrentData = {};
+
+Channels.RequestSync:SetRequestHandler(function(data, user)
+    print("(S) Got a SyncRequest, sending CurrentData.");
+    return CurrentData;
+end)
 
 -- need a manual random function since math.randomseed isnt implemented
 function CreateRandom(seed)
@@ -17,7 +25,11 @@ function CreateRandom(seed)
     end
 end
 
-function RandomizeProgression(ProgressionTableUUID, DescriptionTableUUID, PlaceholderUUID, seed)
+function RandomizeProgression(RandomClassIndex, seed)
+    local ProgressionTableUUID = ClassUtils.RandomClassProgressionUUID[RandomClassIndex];
+    local DescriptionTableUUID = ClassUtils.RandomClassDescriptionUUID[RandomClassIndex];
+    local PlaceholderUUID = ClassUtils.PlaceholderUUID[RandomClassIndex];
+    local data = { RandomClassIndex = RandomClassIndex, Lvl1ClassName = "None", ProgressionEntries = {} };
 
     -- reset everything so we can re seed everything and make sure everything is fine
     local random = CreateRandom(seed);
@@ -30,7 +42,6 @@ function RandomizeProgression(ProgressionTableUUID, DescriptionTableUUID, Placeh
 
     -- probably a really inefficent way to do this but it also doesnt really matter
     -- lvl cap is 20 in this case
-    local lvl1ClassName;
     for level = 1, 20 do
         
         -- find a random class
@@ -45,31 +56,16 @@ function RandomizeProgression(ProgressionTableUUID, DescriptionTableUUID, Placeh
             break;
         end
         local class = possibleClasses[random(1, #possibleClasses)];
-        class.TableUUID = ProgressionTableUUID;
+        table.insert(data.ProgressionEntries, class.ResourceUUID);
         if level == 1 then
-            lvl1ClassName = class.Name;
+            data.Lvl1ClassName = class.Name;
         end
     end
 
-    -- copy class description of the class we got at lvl 1
-    local randomClassDesc = Ext.StaticData.Get(DescriptionTableUUID, "ClassDescription");
-    for _, UUID in ipairs(Ext.StaticData.GetAll("ClassDescription")) do
-        local classDesc = Ext.StaticData.Get(UUID, "ClassDescription");
-        if classDesc.Name == lvl1ClassName then
-            randomClassDesc.CanLearnSpells = classDesc.CanLearnSpells;
-            randomClassDesc.CharacterCreationPose = classDesc.CharacterCreationPose;
-            randomClassDesc.ClassEquipment = classDesc.ClassEquipment;
-            randomClassDesc.HasGod = classDesc.HasGod;
-            randomClassDesc.HpPerLevel = classDesc.HpPerLevel;
-            randomClassDesc.MustPrepareSpells = classDesc.MustPrepareSpells;
-            randomClassDesc.PrimaryAbility = classDesc.PrimaryAbility;
-            randomClassDesc.SomaticEquipmentSet = classDesc.SomaticEquipmentSet;
-            randomClassDesc.SoundClassType = classDesc.SoundClassType;
-            randomClassDesc.SpellCastingAbility = classDesc.SpellCastingAbility;
-            randomClassDesc.SpellList = classDesc.SpellList;
-            randomClassDesc.Tags = classDesc.Tags; -- do something more with this, add all the other tags as you level up?
-        end
-    end
+    -- sync
+    CurrentData[RandomClassIndex] = data;
+    ClassRandomizer.Randomize(data);
+    Channels.Sync:Broadcast(data)
 
     -- list classes for debugging
     local classes = {};
@@ -101,7 +97,7 @@ Ext.Events.SessionLoaded:Subscribe(function()
 
     -- randomize everything
     for i, seed in ipairs(seeds) do
-        RandomizeProgression(ClassUtils.RandomClassProgressionUUID[i], ClassUtils.RandomClassDescriptionUUID[i], ClassUtils.PlaceholderUUID[i], seed);
+        RandomizeProgression(i, seed);
     end
 end)
 
@@ -109,11 +105,11 @@ Ext.Osiris.RegisterListener("FlagSet", 3, "before", function(flag, speaker, dial
     local i = 0;
     if flag == "RerollRandom1_d2e409dd-15c6-40d0-9fa1-4abe1713dc86" then
         i = 1;
-    elseif flag ==  "RerollRandom2_6141243e-8dd6-4509-9f73-5018b762ea5f" then
+    elseif flag == "RerollRandom2_6141243e-8dd6-4509-9f73-5018b762ea5f" then
         i = 2;
-    elseif flag ==  "RerollRandom3_2ba69774-8538-4fc4-9271-a25f9df5b3b9" then
+    elseif flag == "RerollRandom3_2ba69774-8538-4fc4-9271-a25f9df5b3b9" then
         i = 3;
-    elseif flag ==  "RerollRandom4_4b9ca7a9-d5ab-470c-9462-aea445d0e26c" then
+    elseif flag == "RerollRandom4_4b9ca7a9-d5ab-470c-9462-aea445d0e26c" then
         i = 4;
     end
 
@@ -125,7 +121,7 @@ Ext.Osiris.RegisterListener("FlagSet", 3, "before", function(flag, speaker, dial
         print("* New seeds:");
         local seeds = Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds;
         _D(seeds);
-        RandomizeProgression(ClassUtils.RandomClassProgressionUUID[i], ClassUtils.RandomClassDescriptionUUID[i], ClassUtils.PlaceholderUUID[i], seeds[i]);
+        RandomizeProgression(i, seeds[i]);
     end
 end)
 

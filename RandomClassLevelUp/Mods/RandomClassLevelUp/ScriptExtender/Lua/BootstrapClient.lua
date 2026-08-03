@@ -1,6 +1,23 @@
-Ext.Require("ClassUtils.lua");
+print("--- Loading Client ---");
 
-print("--- Client Loaded ---");
+local ClassUtils = Ext.Require("Shared/ClassUtils.lua");
+local Channels = Ext.Require("Shared/Channels.lua");
+local ClassRandomizer = Ext.Require("Shared/ClassRandomizer.lua");
+
+Channels.Sync:SetHandler(function(data, user)
+    print("(C) Got a Sync request, randomizing.")
+    ClassRandomizer.Randomize(data);
+end)
+
+Ext.Events.SessionLoaded:Subscribe(function()
+    print("(C) Sent a SyncRequest.");
+    Channels.RequestSync:RequestToServer({}, function(response)
+        print("(C) Got data back, randomizing.");
+        for _, data in ipairs(response) do
+            ClassRandomizer.Randomize(data);
+        end
+    end)
+end)
 
 local allAddedProgressions = {};
 local addedClasses = {};
