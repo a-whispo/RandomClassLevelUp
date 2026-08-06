@@ -1,18 +1,13 @@
-print("--- Loading Client ---");
-
 local ClassUtils = Ext.Require("Shared/ClassUtils.lua");
 local Channels = Ext.Require("Shared/Channels.lua");
 local ClassRandomizer = Ext.Require("Shared/ClassRandomizer.lua");
 
 Channels.Sync:SetHandler(function(data, user)
-    print("(C) Got a Sync request, randomizing.")
     ClassRandomizer.Randomize(data);
 end)
 
 Ext.Events.SessionLoaded:Subscribe(function()
-    print("(C) Sent a SyncRequest.");
     Channels.RequestSync:RequestToServer({}, function(response)
-        print("(C) Got data back, randomizing.");
         for _, data in ipairs(response) do
             ClassRandomizer.Randomize(data);
         end
@@ -90,7 +85,6 @@ for _, progressionUUID in ipairs(Ext.StaticData.GetAll("Progression")) do
         newClassFound = true;
     end
 end
-print("* Added all classes to Progression table.");
 
 -- add unique ClassDescriptions for each subclass level
 for i = 1, 4 do
@@ -145,7 +139,6 @@ for i = 1, 4 do
         ::continue::;
     end
 end
-print("* Added all subclasses to Progression table.");
 
 -- change ProgressionIds in the description to be global and not specific to classes
 for _, descriptionUUID in ipairs(Ext.StaticData.GetAll("ProgressionDescription")) do
@@ -153,4 +146,3 @@ for _, descriptionUUID in ipairs(Ext.StaticData.GetAll("ProgressionDescription")
     description.ProgressionTableId = ClassUtils.EmptyUUID;
     description.ProgressionId = ClassUtils.EmptyUUID;
 end
-print("* Modified descriptions in ProgressionDescriptions.");

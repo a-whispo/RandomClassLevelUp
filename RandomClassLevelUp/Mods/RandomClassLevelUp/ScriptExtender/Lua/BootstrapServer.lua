@@ -1,12 +1,9 @@
-print("--- Loading Server ---");
-
 local ClassUtils = Ext.Require("Shared/ClassUtils.lua");
 local Channels = Ext.Require("Shared/Channels.lua");
 local ClassRandomizer = Ext.Require("Shared/ClassRandomizer.lua");
 local CurrentData = {};
 
 Channels.RequestSync:SetRequestHandler(function(data, user)
-    print("(S) Got a SyncRequest, sending CurrentData.");
     return CurrentData;
 end)
 
@@ -66,21 +63,6 @@ function RandomizeProgression(RandomClassIndex, seed)
     CurrentData[RandomClassIndex] = data;
     ClassRandomizer.Randomize(data);
     Channels.Sync:Broadcast(data)
-
-    -- list classes for debugging
-    local classes = {};
-    for j, UUID in ipairs(Ext.StaticData.GetAll("Progression")) do
-        local data = Ext.StaticData.Get(UUID, "Progression");
-        if data.TableUUID == ProgressionTableUUID then
-            table.insert(classes, data);
-        end
-    end
-    table.sort(classes, function(class1, class2)
-        return class1.Level < class2.Level;
-    end)
-    for _, class in ipairs(classes) do
-        print("Lvl ".. class.Level .. ": " .. class.Name);
-    end
 end
 
 Ext.Events.SessionLoaded:Subscribe(function()
@@ -88,14 +70,11 @@ Ext.Events.SessionLoaded:Subscribe(function()
     -- get/generate seeds
     if not Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds then
         local time = Ext.Timer.MonotonicTime();
-        print("* Creating a new seeds based on the time: " .. time);
         Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds = {time, time - 100, time - 200, time - 300};
     end
-    local seeds = Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds;
-    print("* Seeds:");
-    _D(seeds);
-
+    
     -- randomize everything
+    local seeds = Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds;
     for i, seed in ipairs(seeds) do
         RandomizeProgression(i, seed);
     end
@@ -118,9 +97,7 @@ Ext.Osiris.RegisterListener("FlagSet", 3, "before", function(flag, speaker, dial
         newSeeds[i] = Ext.Timer.MonotonicTime();
         Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds = newSeeds;
         Osi.ClearFlag(flag);
-        print("* New seeds:");
         local seeds = Ext.Vars.GetModVariables(ModuleUUID).RandomClassSeeds;
-        _D(seeds);
         RandomizeProgression(i, seeds[i]);
     end
 end)
